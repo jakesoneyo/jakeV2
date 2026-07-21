@@ -39,6 +39,13 @@ body {
   font-family: var(--font-mono);
 }
 
+/* 키보드 포커스 링(앰버) — DESIGN.md 접근성 원칙: 포커스 가능한 모든 요소에 일관 적용 */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
 /* 스킵 링크: 기본 화면 밖에 숨겼다가 포커스 시 노출 */
 .skip-link {
   position: absolute;
