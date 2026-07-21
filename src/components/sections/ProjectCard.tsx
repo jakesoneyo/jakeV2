@@ -1,6 +1,6 @@
 import type { Project } from '../../types';
 
-const TYPE_LABELS: Record<Project['status'], string> = {
+const STATUS_LABELS: Record<Project['status'], string> = {
   completed: '완료',
   'in-progress': '진행중',
   'coming-soon': '준비중',
@@ -12,8 +12,11 @@ export function ProjectCard({ project }: { project: Project }) {
     <article className="flex flex-col gap-4 rounded-lg border border-line bg-surface p-6">
       <div className="flex items-start justify-between gap-3">
         <h3 className="m-0 font-sans text-base font-semibold text-ink">{project.title}</h3>
-        <span className="shrink-0 rounded border border-line px-2 py-0.5 text-[0.7rem] text-muted">
-          {TYPE_LABELS[project.status]}
+        <span
+          className="shrink-0 rounded border border-line px-2 py-0.5 text-[0.7rem] text-muted"
+          aria-label={`상태: ${STATUS_LABELS[project.status]}`}
+        >
+          {STATUS_LABELS[project.status]}
         </span>
       </div>
 
