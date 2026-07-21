@@ -1,5 +1,7 @@
 # jakeV2 — Portfolio Hub
 
+**라이브:** https://jakev2.vercel.app
+
 손영선(신입 풀스택/백엔드 개발자, GitHub [`jakesoneyo`](https://github.com/jakesoneyo))의 개인 포트폴리오 허브 랜딩 페이지.
 포폴 워크스페이스에서 완성되는 프로젝트들을 모아 보여주는 관문(hub) 역할을 한다.
 
