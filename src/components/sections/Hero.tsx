@@ -47,11 +47,15 @@ export function Hero() {
   );
 }
 
-/** Hero 하단의 장식용 데이터 파이프라인 다이어그램: agent → ingest api → postgres */
+/**
+ * Hero 하단의 장식용 데이터 파이프라인 다이어그램: agent → ingest api → postgres.
+ * width="100%" + viewBox만으로 완전히 유동적으로 축소되게 해 좁은 뷰포트에서도 잘리지 않는다
+ * (고정 min-width를 두면 좁은 화면에서 내부 스크롤이 생겨 세 번째 노드가 가려짐).
+ */
 function PipelineDiagram() {
   return (
-    <div className="mb-12 overflow-x-auto pb-2" aria-hidden="true">
-      <svg viewBox="0 0 640 90" width="100%" height="90" className="min-w-[640px]" role="presentation">
+    <div className="mb-12" aria-hidden="true">
+      <svg viewBox="0 0 640 90" width="100%" height="90" preserveAspectRatio="xMidYMid meet" role="presentation">
         <text x="0" y="14" className="fill-muted font-mono text-[10px]">
           DATA PIPELINE
         </text>

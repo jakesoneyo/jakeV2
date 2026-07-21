@@ -37,6 +37,8 @@ body {
   background: var(--color-bg);
   color: var(--color-ink);
   font-family: var(--font-mono);
+  /* 단일 스크롤 랜딩 페이지 — 어떤 자식 요소도 body를 가로로 넘치게 해서는 안 된다 */
+  overflow-x: hidden;
 }
 
 /* 키보드 포커스 링(앰버) — DESIGN.md 접근성 원칙: 포커스 가능한 모든 요소에 일관 적용 */
