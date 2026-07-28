@@ -5,14 +5,10 @@
 
 /** 프로젝트 유형 태그. 포폴 워크스페이스 다양성 태그 체계와 동일 */
 export type ProjectType =
-  | 'CRUD'
-  | '실시간'
-  | '데이터/알고리즘'
-  | '외부API'
-  | '인증/보안';
+  "CRUD" | "실시간" | "데이터/알고리즘" | "외부API" | "인증/보안";
 
 /** 카드 표시 상태. 데이터가 채워지기 전에는 'coming-soon' */
-export type ProjectStatus = 'completed' | 'in-progress' | 'coming-soon';
+export type ProjectStatus = "completed" | "in-progress" | "coming-soon";
 
 /** projects.ts 데이터 배열의 항목 하나가 카드 하나에 대응된다 */
 export interface Project {
@@ -29,11 +25,13 @@ export interface Project {
   liveUrl?: string;
   /** 있을 때만 버튼 렌더 */
   repoUrl?: string;
+  /** 카드에 노출할 트러블슈팅 한 줄 요약 — 실제 개발 과정에서 겪은 문제와 해결 (다른 프로젝트와 겹치지 않는 이야기) */
+  troubleshooting?: string;
 }
 
 /** Skills 섹션의 카테고리 그룹 */
 export interface SkillCategory {
-  label: 'Frontend' | 'Backend' | 'Data · Deploy';
+  label: "Frontend" | "Backend" | "Data · Deploy";
   items: string[];
 }
 
