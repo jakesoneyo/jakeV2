@@ -1,4 +1,4 @@
-import { profile } from '../../data/profile';
+import { profile } from "../../data/profile";
 
 /**
  * 최상단 히어로 — 상태 라인 + 헤드라인 + CTA 2개 + 데이터 파이프라인 다이어그램.
@@ -6,10 +6,17 @@ import { profile } from '../../data/profile';
  */
 export function Hero() {
   return (
-    <section id="top" className="border-b border-line pt-12 sm:pt-16" aria-labelledby="hero-heading">
+    <section
+      id="top"
+      className="border-b border-line pt-12 print:hidden sm:pt-16"
+      aria-labelledby="hero-heading"
+    >
       <div className="mx-auto max-w-5xl px-5 sm:px-8">
         <div className="mb-6 flex items-center gap-2 text-[0.82rem] text-ink-soft">
-          <span className="status-dot inline-block h-[7px] w-[7px] rounded-full bg-ok" aria-hidden="true" />
+          <span
+            className="status-dot inline-block h-[7px] w-[7px] rounded-full bg-ok"
+            aria-hidden="true"
+          />
           AVAILABLE · 신입 풀스택 개발자
         </div>
 
@@ -55,24 +62,87 @@ export function Hero() {
 function PipelineDiagram() {
   return (
     <div className="mb-12" aria-hidden="true">
-      <svg viewBox="0 0 640 90" width="100%" height="90" preserveAspectRatio="xMidYMid meet" role="presentation">
+      <svg
+        viewBox="0 0 640 90"
+        width="100%"
+        height="90"
+        preserveAspectRatio="xMidYMid meet"
+        role="presentation"
+      >
         <text x="0" y="14" className="fill-muted font-mono text-[10px]">
           DATA PIPELINE
         </text>
 
-        <path d="M90,50 H180" stroke="var(--color-line)" strokeWidth="1.4" fill="none" />
-        <path d="M270,50 H400" stroke="var(--color-line)" strokeWidth="1.4" fill="none" />
+        <path
+          d="M90,50 H180"
+          stroke="var(--color-line)"
+          strokeWidth="1.4"
+          fill="none"
+        />
+        <path
+          d="M270,50 H400"
+          stroke="var(--color-line)"
+          strokeWidth="1.4"
+          fill="none"
+        />
 
-        <rect x="10" y="34" width="80" height="32" rx="4" fill="var(--color-surface-2)" stroke="var(--color-line)" strokeWidth="1.4" />
-        <rect x="180" y="34" width="90" height="32" rx="4" fill="var(--color-surface-2)" stroke="var(--color-line)" strokeWidth="1.4" />
-        <rect x="400" y="34" width="90" height="32" rx="4" fill="var(--color-surface-2)" stroke="var(--color-line)" strokeWidth="1.4" />
+        <rect
+          x="10"
+          y="34"
+          width="80"
+          height="32"
+          rx="4"
+          fill="var(--color-surface-2)"
+          stroke="var(--color-line)"
+          strokeWidth="1.4"
+        />
+        <rect
+          x="180"
+          y="34"
+          width="90"
+          height="32"
+          rx="4"
+          fill="var(--color-surface-2)"
+          stroke="var(--color-line)"
+          strokeWidth="1.4"
+        />
+        <rect
+          x="400"
+          y="34"
+          width="90"
+          height="32"
+          rx="4"
+          fill="var(--color-surface-2)"
+          stroke="var(--color-line)"
+          strokeWidth="1.4"
+        />
 
-        <text x="26" y="55" className="fill-ink-soft font-mono text-[11px]">agent</text>
-        <text x="194" y="55" className="fill-ink-soft font-mono text-[11px]">ingest api</text>
-        <text x="415" y="55" className="fill-ink-soft font-mono text-[11px]">postgres</text>
+        <text x="26" y="55" className="fill-ink-soft font-mono text-[11px]">
+          agent
+        </text>
+        <text x="194" y="55" className="fill-ink-soft font-mono text-[11px]">
+          ingest api
+        </text>
+        <text x="415" y="55" className="fill-ink-soft font-mono text-[11px]">
+          postgres
+        </text>
 
-        <circle className="flow-dot" cx="135" cy="50" r="2.6" fill="var(--color-accent)" style={{ animationDelay: '0s' }} />
-        <circle className="flow-dot" cx="335" cy="50" r="2.6" fill="var(--color-accent)" style={{ animationDelay: '0.8s' }} />
+        <circle
+          className="flow-dot"
+          cx="135"
+          cy="50"
+          r="2.6"
+          fill="var(--color-accent)"
+          style={{ animationDelay: "0s" }}
+        />
+        <circle
+          className="flow-dot"
+          cx="335"
+          cy="50"
+          r="2.6"
+          fill="var(--color-accent)"
+          style={{ animationDelay: "0.8s" }}
+        />
       </svg>
     </div>
   );

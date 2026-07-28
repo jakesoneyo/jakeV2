@@ -18,8 +18,11 @@
   --color-accent: #e8a23d;
   --color-ok: #3ecf7e;
 
-  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono:
+    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-sans:
+    "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, sans-serif;
 }
 
 html {
@@ -39,6 +42,19 @@ body {
   font-family: var(--font-mono);
   /* 단일 스크롤 랜딩 페이지 — 어떤 자식 요소도 body를 가로로 넘치게 해서는 안 된다 */
   overflow-x: hidden;
+}
+
+/* 인쇄 시에는 다크 콘솔 배경 대신 흰 종이 배경으로 — PrintResume 외 영역은 print:hidden으로 숨지만
+   body 배경색 자체는 남아있어 빈 여백이 검게 찍히는 것을 막는다 */
+@media print {
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
 }
 
 /* 키보드 포커스 링(앰버) — DESIGN.md 접근성 원칙: 포커스 가능한 모든 요소에 일관 적용 */
@@ -65,9 +81,15 @@ button:focus-visible {
 
 /* 상태 라인의 "구직중" 점멸 표시 — reduced-motion 사용자는 정지 상태로 고정 */
 @keyframes status-blip {
-  0% { box-shadow: 0 0 0 0 rgba(62, 207, 126, 0.4); }
-  70% { box-shadow: 0 0 0 6px rgba(62, 207, 126, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(62, 207, 126, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(62, 207, 126, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(62, 207, 126, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(62, 207, 126, 0);
+  }
 }
 
 .status-dot {
@@ -82,8 +104,13 @@ button:focus-visible {
 
 /* 데이터 파이프라인 다이어그램의 흐름 표시(순차 점멸) */
 @keyframes flow-pulse {
-  0%, 100% { opacity: 0.15; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .flow-dot {

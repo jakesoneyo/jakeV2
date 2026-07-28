@@ -1,12 +1,17 @@
-import { Header } from './components/layout/Header';
-import { Footer } from './components/layout/Footer';
-import { Hero } from './components/sections/Hero';
-import { About } from './components/sections/About';
-import { Skills } from './components/sections/Skills';
-import { Projects } from './components/sections/Projects';
-import { Contact } from './components/sections/Contact';
+import { Header } from "./components/layout/Header";
+import { Footer } from "./components/layout/Footer";
+import { Hero } from "./components/sections/Hero";
+import { About } from "./components/sections/About";
+import { Skills } from "./components/sections/Skills";
+import { Projects } from "./components/sections/Projects";
+import { Contact } from "./components/sections/Contact";
+import { PrintResume } from "./components/PrintResume";
 
-/** 포트폴리오 허브 단일 페이지 조립 — 데이터(src/data)는 각 섹션 컴포넌트가 직접 import해 소비한다 */
+/**
+ * 포트폴리오 허브 단일 페이지 조립 — 데이터(src/data)는 각 섹션 컴포넌트가 직접 import해 소비한다.
+ * 화면용 다크 콘솔 섹션들은 인쇄 시 `print:hidden`으로 숨고, 대신 PrintResume가 노출된다
+ * (별도 라우트 없이 같은 페이지 안에서 미디어 쿼리로 전환).
+ */
 function App() {
   return (
     <>
@@ -22,6 +27,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <PrintResume />
     </>
   );
 }
