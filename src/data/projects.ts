@@ -32,7 +32,7 @@ export const projects: Project[] = [
   },
   {
     slug: "linkstash-ai",
-    title: "linkstash-ai — AI 자동요약 북마크 SaaS",
+    title: "LinkBrief — AI 자동요약 북마크 SaaS",
     description:
       "저장한 링크를 크롤링해 OpenAI로 자동 요약·태그를 생성하는 북마크 서비스. 크롤링부터 LLM 구조화 출력, 저장까지 외부 호출 실패를 흡수하는 파이프라인으로 설계했다.",
     types: ["외부API"],
