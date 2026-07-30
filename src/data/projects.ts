@@ -29,6 +29,7 @@ export const projects: Project[] = [
       "네트워크가 끊겼다 복구된 현장 에이전트가 같은 데이터를 재전송해도 중복 적재되면 안 됐다. 애플리케이션 레벨 check-then-act는 동시 요청에서 경쟁 상태가 생길 수 있어, Postgres 단일 CTE(INSERT...ON CONFLICT DO NOTHING + 조건부 본삽입)로 원자성을 보장했고, Testcontainers로 동시 20개 요청을 보내 정확히 1건만 적재되는 것까지 검증했다.",
     liveUrl: "https://yuhyeon.vercel.app",
     repoUrl: "https://github.com/jakesoneyo/yuhyeon",
+    apiHealthUrl: "https://yuhyeon.onrender.com/api/health",
   },
   {
     slug: "linkstash-ai",
@@ -42,6 +43,7 @@ export const projects: Project[] = [
       'Neon 서버리스 Postgres 환경에서 여러 단계로 이어지는 인터랙티브 트랜잭션이 중간에 끊겨 "Transaction not found" 에러가 반복됐다. 서버리스 커넥션 특성상 트랜잭션을 오래 열어두는 방식이 맞지 않는다고 판단해, 인터랙티브 트랜잭션 대신 순차적인 단일 쓰기 방식으로 재설계해 해결했다.',
     liveUrl: "https://linkstash-ai.vercel.app",
     repoUrl: "https://github.com/jakesoneyo/linkstash-ai",
+    apiHealthUrl: "https://linkstash-ai-api.onrender.com/health",
   },
   {
     slug: "strongsalon",
@@ -55,6 +57,7 @@ export const projects: Project[] = [
       "코드 리뷰 중, 인증 없이 호출해도 관리자 계정을 생성할 수 있는 `create-test-account` 백도어 엔드포인트를 발견했다. 즉시 제거하고, 이메일 형식 검증을 우회하던 커스텀 데코레이터도 표준 `@IsEmail` 검증으로 되돌려 실제 보안 결함을 없앴다.",
     liveUrl: "https://new-gym-front.vercel.app",
     repoUrl: "https://github.com/jakesoneyo/newGym",
+    apiHealthUrl: "https://newgym-1qof.onrender.com/health",
   },
   {
     slug: "pingboard",
@@ -68,5 +71,6 @@ export const projects: Project[] = [
       "검수 중, 인증 없이 호출 가능한 GET /posts가 DTO를 공용으로 재사용하면서 전체 사용자의 이메일을 응답에 노출하고 있는 것을 발견했다. 응답 전용 AuthorSummaryDto를 분리하고 QueryBuilder에서 email 컬럼 선택 자체를 제거해 근본적으로 노출 경로를 차단했다.",
     liveUrl: "https://pingboard-sigma.vercel.app",
     repoUrl: "https://github.com/jakesoneyo/pingboard",
+    apiHealthUrl: "https://pingboard-server.onrender.com/health",
   },
 ];

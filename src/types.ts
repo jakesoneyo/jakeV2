@@ -27,6 +27,8 @@ export interface Project {
   repoUrl?: string;
   /** 카드에 노출할 트러블슈팅 한 줄 요약 — 실제 개발 과정에서 겪은 문제와 해결 (다른 프로젝트와 겹치지 않는 이야기) */
   troubleshooting?: string;
+  /** 있으면 앱 마운트 시 fire-and-forget으로 호출해 Render 콜드스타트를 미리 깨운다 */
+  apiHealthUrl?: string;
 }
 
 /** Skills 섹션의 카테고리 그룹 */
