@@ -56,4 +56,17 @@ export const projects: Project[] = [
     liveUrl: "https://new-gym-front.vercel.app",
     repoUrl: "https://github.com/jakesoneyo/newGym",
   },
+  {
+    slug: "pingboard",
+    title: "Pingboard — 미니 게시판 + 실시간 알림함",
+    description:
+      "소켓은 신뢰할 수 없는 채널이라는 전제 위에서 설계한 실시간 알림 시스템. 댓글 작성과 알림 생성을 한 트랜잭션으로 묶고, 커밋 후에만 소켓으로 emit해 유실 없는 알림함을 만들었다.",
+    types: ["실시간"],
+    stack: ["NestJS", "TypeORM", "Socket.io", "Neon Postgres", "React", "Vite"],
+    status: "completed",
+    troubleshooting:
+      "검수 중, 인증 없이 호출 가능한 GET /posts가 DTO를 공용으로 재사용하면서 전체 사용자의 이메일을 응답에 노출하고 있는 것을 발견했다. 응답 전용 AuthorSummaryDto를 분리하고 QueryBuilder에서 email 컬럼 선택 자체를 제거해 근본적으로 노출 경로를 차단했다.",
+    liveUrl: "https://pingboard-sigma.vercel.app",
+    repoUrl: "https://github.com/jakesoneyo/pingboard",
+  },
 ];
