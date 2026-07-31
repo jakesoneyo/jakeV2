@@ -61,41 +61,45 @@ jakeV2/
 ```ts
 /** 프로젝트 유형 태그 (포폴 워크스페이스 다양성 태그와 동일 체계) */
 export type ProjectType =
-  | 'CRUD'
-  | '실시간'
-  | '데이터/알고리즘'
-  | '외부API'
-  | '인증/보안';
+  "CRUD" | "실시간" | "데이터/알고리즘" | "외부API" | "인증/보안";
 
 /** 카드 표시 상태. 데이터가 채워지기 전에는 'coming-soon' */
-export type ProjectStatus = 'completed' | 'in-progress' | 'coming-soon';
+export type ProjectStatus = "completed" | "in-progress" | "coming-soon";
 
 export interface Project {
-  slug: string;            // 안정적 key (예: 'url-shortener')
+  slug: string; // 안정적 key (예: 'url-shortener')
   title: string;
-  description: string;     // 카드용 1~2문장 요약
-  types: ProjectType[];    // 유형 배지 (다양성 근거를 시각적으로 보여줌)
-  stack: string[];         // 기술 스택 태그 (예: ['NestJS','Prisma','Neon'])
+  description: string; // 카드용 1~2문장 요약
+  types: ProjectType[]; // 유형 배지 (다양성 근거를 시각적으로 보여줌)
+  stack: string[]; // 기술 스택 태그 (예: ['NestJS','Prisma','Neon'])
   status: ProjectStatus;
-  liveUrl?: string;        // 라이브 데모 (있을 때만)
-  repoUrl?: string;        // GitHub 레포 (있을 때만)
+  liveUrl?: string; // 라이브 데모 (있을 때만)
+  repoUrl?: string; // GitHub 레포 (있을 때만)
+  detail?: ProjectDetail; // 있으면 카드에 "자세히 보기" 버튼 + 상세 모달 렌더
+}
+
+export interface ProjectDetail {
+  intro: string; // 확장 시 노출되는 상세 소개
+  highlights: string[]; // 주요 구현 내용 불릿
 }
 ```
+
+카드 = 요약(항상 보임) / "자세히 보기" 클릭 시 네이티브 `<dialog>` 모달로 상세(`Project.detail` 필드, 즉 intro·highlights·troubleshooting) 노출.
 
 **Skills / Profile 타입** (동일 파일):
 
 ```ts
 export interface SkillCategory {
-  label: 'Frontend' | 'Backend' | 'Data · Deploy';
+  label: "Frontend" | "Backend" | "Data · Deploy";
   items: string[];
 }
 
 export interface Profile {
   name: string;
-  tagline: string;         // 한 줄 소개
-  intro: string;           // 문단형 자기소개
+  tagline: string; // 한 줄 소개
+  intro: string; // 문단형 자기소개
   email: string;
-  github: string;          // URL
+  github: string; // URL
 }
 ```
 
@@ -130,30 +134,30 @@ export const projects: Project[] = [
 
 ## 4. 컴포넌트 구성
 
-| 컴포넌트 | 책임 | 데이터 소스 |
-|---|---|---|
-| `App` | 섹션 순서 조립, 스크롤 컨테이너 | — |
-| `Header` | 앵커 네비게이션(#skills, #projects, #contact) | `profile` |
-| `Hero` | 이름·tagline·intro·연락 CTA | `profile` |
-| `Skills` | 3개 카테고리 카드 + 태그 pill | `skills` |
-| `Projects` | 카드 그리드 + 빈 상태 | `projects` |
-| `ProjectCard` | 단일 카드(제목·설명·타입 배지·스택·링크) | props: `Project` |
-| `Contact` | email(mailto)·github 링크 | `profile` |
-| `Footer` | 저작권, GitHub | `profile` |
+| 컴포넌트      | 책임                                          | 데이터 소스      |
+| ------------- | --------------------------------------------- | ---------------- |
+| `App`         | 섹션 순서 조립, 스크롤 컨테이너               | —                |
+| `Header`      | 앵커 네비게이션(#skills, #projects, #contact) | `profile`        |
+| `Hero`        | 이름·tagline·intro·연락 CTA                   | `profile`        |
+| `Skills`      | 3개 카테고리 카드 + 태그 pill                 | `skills`         |
+| `Projects`    | 카드 그리드 + 빈 상태                         | `projects`       |
+| `ProjectCard` | 단일 카드(제목·설명·타입 배지·스택·링크)      | props: `Project` |
+| `Contact`     | email(mailto)·github 링크                     | `profile`        |
+| `Footer`      | 저작권, GitHub                                | `profile`        |
 
 - 상태 관리 라이브러리(Zustand/TanStack Query) **불필요** — 서버 상태·클라 상태 없음. 순수 정적 렌더. (ponytail)
 - 라우팅 불필요 — 단일 페이지 앵커 스크롤.
 
 ## 5. 기술 선택 근거
 
-| 결정 | 근거 |
-|---|---|
-| Vite + React + TS | 워크스페이스 표준 프론트 스택. 빠른 빌드·HMR. |
-| Tailwind v4 | 표준. 유틸리티로 반응형·다크대비 빠르게. 별도 CSS 파일 최소화. |
+| 결정                               | 근거                                                                                                             |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Vite + React + TS                  | 워크스페이스 표준 프론트 스택. 빠른 빌드·HMR.                                                                    |
+| Tailwind v4                        | 표준. 유틸리티로 반응형·다크대비 빠르게. 별도 CSS 파일 최소화.                                                   |
 | 데이터 파일 주도 (`src/data/*.ts`) | **핵심 요구사항.** CMS·백엔드 없이 타입 안전하게 콘텐츠 확장. TS 컴파일러가 스키마 강제 → 잘못된 항목 추가 방지. |
-| 상태 라이브러리 미도입 | 동적 상태 없음. 과설계 회피(ponytail). |
-| 라우터 미도입 | 단일 스크롤 페이지로 충분. |
-| Vercel 배포 | 워크스페이스 규약(프론트 SPA는 항상 Vercel). 정적 호스팅 + CDN. |
+| 상태 라이브러리 미도입             | 동적 상태 없음. 과설계 회피(ponytail).                                                                           |
+| 라우터 미도입                      | 단일 스크롤 페이지로 충분.                                                                                       |
+| Vercel 배포                        | 워크스페이스 규약(프론트 SPA는 항상 Vercel). 정적 호스팅 + CDN.                                                  |
 
 ## 6. 접근성 · 반응형 원칙
 

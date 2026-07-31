@@ -29,6 +29,16 @@ export interface Project {
   troubleshooting?: string;
   /** 있으면 앱 마운트 시 fire-and-forget으로 호출해 Render 콜드스타트를 미리 깨운다 */
   apiHealthUrl?: string;
+  /** 있으면 카드에 아코디언 토글 버튼을 렌더 — 펼치면 상세 소개·구현 내용을 보여준다 */
+  detail?: ProjectDetail;
+}
+
+/** 카드 확장 시 노출되는 상세 정보 (아코디언) */
+export interface ProjectDetail {
+  /** 확장 시 노출되는 상세 소개 (2~4문장) */
+  intro: string;
+  /** 주요 구현 내용 — 불릿 리스트 */
+  highlights: string[];
 }
 
 /** Skills 섹션의 카테고리 그룹 */

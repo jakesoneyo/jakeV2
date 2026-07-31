@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import type { Project } from "../../types";
 
@@ -43,7 +43,44 @@ describe("Projects", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("troubleshooting 필드가 있으면 카드에 노출한다", async () => {
+  it("모달 열기 전엔 troubleshooting/detail 텍스트가 안 보이다가, '자세히 보기' 클릭 후에 보인다", async () => {
+    const sample: Project[] = [
+      {
+        slug: "sample-project",
+        title: "Sample Project",
+        description: "테스트용 샘플 프로젝트 설명",
+        types: ["CRUD"],
+        stack: ["NestJS"],
+        status: "completed",
+        troubleshooting: "동시 요청 경쟁 상태를 CTE로 해결했다.",
+        detail: {
+          intro: "상세 소개 문단입니다.",
+          highlights: ["핵심 구현 내용 1"],
+        },
+      },
+    ];
+    vi.resetModules();
+    vi.doMock("../../data/projects", () => ({ projects: sample }));
+    const { Projects } = await import("./Projects");
+
+    render(<Projects />);
+
+    // <dialog>는 open 속성이 없으면 자식 콘텐츠가 DOM엔 있어도 jest-dom이 "안 보임"으로 판정한다.
+    expect(
+      screen.getByText("동시 요청 경쟁 상태를 CTE로 해결했다."),
+    ).not.toBeVisible();
+    expect(screen.getByText("상세 소개 문단입니다.")).not.toBeVisible();
+
+    fireEvent.click(screen.getByText("자세히 보기"));
+
+    expect(
+      screen.getByText("동시 요청 경쟁 상태를 CTE로 해결했다."),
+    ).toBeVisible();
+    expect(screen.getByText("상세 소개 문단입니다.")).toBeVisible();
+    expect(screen.getByText("핵심 구현 내용 1")).toBeVisible();
+  });
+
+  it("detail 필드가 없으면 '자세히 보기' 버튼과 모달을 렌더하지 않는다", async () => {
     const sample: Project[] = [
       {
         slug: "sample-project",
@@ -61,8 +98,8 @@ describe("Projects", () => {
 
     render(<Projects />);
 
-    expect(
-      screen.getByText("동시 요청 경쟁 상태를 CTE로 해결했다."),
-    ).toBeInTheDocument();
+    expect(screen.queryByText("자세히 보기")).not.toBeInTheDocument();
+    expect(screen.queryByRole("button")).not.toBeInTheDocument();
+    expect(document.querySelector("dialog")).not.toBeInTheDocument();
   });
 });

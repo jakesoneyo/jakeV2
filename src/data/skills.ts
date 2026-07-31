@@ -1,20 +1,58 @@
-import type { SkillCategory } from '../types';
+import type { SkillCategory } from "../types";
 
 /**
- * 핵심 역량 태그. PDF 원본의 카테고리·항목을 그대로 유지(왜곡 금지).
+ * 핵심 역량 태그. 4개 완성 포트폴리오 프로젝트(linkstash-ai, pingboard, SiteScope, 스트롱쌀롱)에서
+ * 실제로 쓴 스택을 반영해 갱신함. 카테고리 내 정렬은 프레임워크/플랫폼(큰 것) → 개별 라이브러리(작은 것) 순.
  * Backend가 실제 주력 분야 — Skills 컴포넌트에서 강조(★) 처리.
  */
 export const skills: SkillCategory[] = [
   {
-    label: 'Frontend',
-    items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Recharts', 'Flutter', 'Riverpod', 'go_router'],
+    label: "Frontend",
+    items: [
+      "React",
+      "Next.js",
+      "Vite",
+      "TypeScript",
+      "Tailwind CSS",
+      "Zustand",
+      "TanStack Query",
+      "Zod",
+      "Axios",
+      "Recharts",
+      "Flutter",
+      "Riverpod",
+      "go_router",
+    ],
   },
   {
-    label: 'Backend',
-    items: ['Express', 'NestJS', 'TypeScript', 'JWT', 'bcrypt', 'Swagger', 'WebSocket'],
+    label: "Backend",
+    items: [
+      "NestJS",
+      "Express",
+      "TypeScript",
+      "Prisma",
+      "TypeORM",
+      "JWT",
+      "bcrypt",
+      "Socket.io",
+      "WebSocket",
+      "class-validator",
+      "Swagger",
+    ],
   },
   {
-    label: 'Data · Deploy',
-    items: ['PostgreSQL', 'Render', 'Vercel', 'CORS', 'ExcelJS', 'jsPDF'],
+    label: "Data · Deploy",
+    items: [
+      "PostgreSQL",
+      "Neon Postgres",
+      "Docker",
+      "Render",
+      "Vercel",
+      "GitHub Actions",
+      "Testcontainers",
+      "CORS",
+      "ExcelJS",
+      "jsPDF",
+    ],
   },
 ];
