@@ -113,7 +113,7 @@ export const projects: Project[] = [
       intro:
         "현장 담당자가 데스크톱 환경이 아니어도 센서 상태·알람·대시보드 지표를 확인할 수 있도록 만든 모바일 앱이다. 웹과 동일한 API 계약을 유지해 기능 동등성을 확보했다.",
       highlights: [
-        "로그인·로그아웃·세션복원 흐름을 AuthController에서 일원화하고, 세션 복원 시 /api/auth/me로 토큰 유효성을 서버 기준으로 재확인했다.",
+        "로그인·로그아웃·세션 복원 흐름을 AuthController에서 일원화하고, 세션 복원 시 /api/auth/me로 토큰 유효성을 서버 기준으로 재확인했다.",
         "JWT 토큰을 flutter_secure_storage에 저장하고, Dio interceptor로 Authorization 헤더를 자동 부착했다.",
         "권한(canManage) 기준으로 읽기 전용/관리 가능 UI를 분리했다.",
         "depth_criteria·correction_params·formula_params를 구조화해 depth별 데이터를 안정적으로 처리했다.",

@@ -73,8 +73,11 @@ export interface Project {
   types: ProjectType[]; // 유형 배지 (다양성 근거를 시각적으로 보여줌)
   stack: string[]; // 기술 스택 태그 (예: ['NestJS','Prisma','Neon'])
   status: ProjectStatus;
-  liveUrl?: string; // 라이브 데모 (있을 때만)
+  liveUrl?: string; // 사이트 바로가기 (있을 때만) — primaryLinkLabel로 앵커 텍스트 오버라이드 가능
+  primaryLinkLabel?: string; // liveUrl 앵커 텍스트 오버라이드 (기본값 "사이트 바로가기")
   repoUrl?: string; // GitHub 레포 (있을 때만)
+  troubleshooting?: string; // 트러블슈팅 한 줄 요약 — 상세 모달 안에서 노출
+  apiHealthUrl?: string; // 있으면 마운트 시 fire-and-forget으로 호출해 Render 콜드스타트를 예열
   detail?: ProjectDetail; // 있으면 카드에 "자세히 보기" 버튼 + 상세 모달 렌더
 }
 
