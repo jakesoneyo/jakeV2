@@ -96,6 +96,36 @@ export const projects: Project[] = [
     apiHealthUrl: "https://yuhyeon.onrender.com/api/health",
   },
   {
+    slug: "yuhyeon-app",
+    title: "유현건설 어플 (Flutter)",
+    description:
+      "유현건설 계측 플랫폼의 핵심 모니터링 기능을 모바일 환경에서 조회할 수 있도록 이식한 앱. 웹과 동일한 데이터 구조를 기준으로 현장 조회, 센서 상태 확인 등을 지원한다.",
+    types: ["인증/보안"],
+    stack: [
+      "Flutter",
+      "Riverpod",
+      "go_router",
+      "Dio",
+      "flutter_secure_storage",
+    ],
+    status: "completed",
+    detail: {
+      intro:
+        "현장 담당자가 데스크톱 환경이 아니어도 센서 상태·알람·대시보드 지표를 확인할 수 있도록 만든 모바일 앱이다. 웹과 동일한 API 계약을 유지해 기능 동등성을 확보했다.",
+      highlights: [
+        "로그인·로그아웃·세션복원 흐름을 AuthController에서 일원화하고, 세션 복원 시 /api/auth/me로 토큰 유효성을 서버 기준으로 재확인했다.",
+        "JWT 토큰을 flutter_secure_storage에 저장하고, Dio interceptor로 Authorization 헤더를 자동 부착했다.",
+        "권한(canManage) 기준으로 읽기 전용/관리 가능 UI를 분리했다.",
+        "depth_criteria·correction_params·formula_params를 구조화해 depth별 데이터를 안정적으로 처리했다.",
+        "목업 모드와 실 API 구조를 분리해 시연 단계에서 실연동 단계로 자연스럽게 전환되도록 설계했다.",
+        "GitHub Releases로 테스트 APK를 패키징하고 QR 코드로 설치 링크를 배포해 현장 테스트 전달 과정을 단순화했다.",
+      ],
+    },
+    liveUrl: "https://github.com/jakesoneyo/yuhyeonApp/releases",
+    primaryLinkLabel: "APK 설치 페이지",
+    repoUrl: "https://github.com/jakesoneyo/yuhyeonApp",
+  },
+  {
     slug: "strongsalon",
     title: "스트롱쌀롱 — PT샵 회원 체력평가 시스템",
     description:

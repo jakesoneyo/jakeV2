@@ -28,7 +28,8 @@ function ProjectLinks({
           rel="noopener noreferrer"
           className="text-accent no-underline hover:brightness-110"
         >
-          사이트 바로가기 <span aria-hidden="true">↗</span>
+          {project.primaryLinkLabel ?? "사이트 바로가기"}{" "}
+          <span aria-hidden="true">↗</span>
         </a>
       )}
       {project.repoUrl && (

@@ -23,17 +23,19 @@ export interface Project {
   status: ProjectStatus;
   /** 있을 때만 버튼 렌더 */
   liveUrl?: string;
+  /** liveUrl 앵커 텍스트 오버라이드. 기본값 "사이트 바로가기" — 웹사이트가 아닌 링크(예: 모바일 앱 APK)에 사용 */
+  primaryLinkLabel?: string;
   /** 있을 때만 버튼 렌더 */
   repoUrl?: string;
   /** 카드에 노출할 트러블슈팅 한 줄 요약 — 실제 개발 과정에서 겪은 문제와 해결 (다른 프로젝트와 겹치지 않는 이야기) */
   troubleshooting?: string;
   /** 있으면 앱 마운트 시 fire-and-forget으로 호출해 Render 콜드스타트를 미리 깨운다 */
   apiHealthUrl?: string;
-  /** 있으면 카드에 아코디언 토글 버튼을 렌더 — 펼치면 상세 소개·구현 내용을 보여준다 */
+  /** 있으면 카드에 "자세히 보기" 버튼을 렌더 — 클릭 시 모달로 상세 소개·구현 내용을 보여준다 */
   detail?: ProjectDetail;
 }
 
-/** 카드 확장 시 노출되는 상세 정보 (아코디언) */
+/** 카드의 "자세히 보기" 모달에서 노출되는 상세 정보 */
 export interface ProjectDetail {
   /** 확장 시 노출되는 상세 소개 (2~4문장) */
   intro: string;
