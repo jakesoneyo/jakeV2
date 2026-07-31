@@ -17,14 +17,15 @@
 
 ## 2. 핵심 기능 범위 (In Scope)
 
-| # | 섹션 | 내용 |
-|---|------|------|
-| 1 | Hero / Intro | 이름·한 줄 소개, 자기소개 문구, 연락 CTA(이메일/GitHub) |
-| 2 | 핵심 역량 (Skills) | Frontend / Backend / Data·Deploy 3개 카테고리별 기술 태그 |
-| 3 | 프로젝트 목록 (Projects) | `src/data/projects.ts` 데이터 파일을 map으로 렌더링한 카드 그리드. 지금은 비어있거나 "Coming soon" 상태 |
-| 4 | 연락처 (Contact) | 이메일 `jakesoneyo@gmail.com`, GitHub `github.com/jakesoneyo` 링크만 |
+| #   | 섹션                     | 내용                                                                                                    |
+| --- | ------------------------ | ------------------------------------------------------------------------------------------------------- |
+| 1   | Hero / Intro             | 이름·한 줄 소개, 자기소개 문구, 연락 CTA(이메일/GitHub)                                                 |
+| 2   | 핵심 역량 (Skills)       | Frontend / Backend / Data·Deploy 3개 카테고리별 기술 태그                                               |
+| 3   | 프로젝트 목록 (Projects) | `src/data/projects.ts` 데이터 파일을 map으로 렌더링한 카드 그리드. 지금은 비어있거나 "Coming soon" 상태 |
+| 4   | 연락처 (Contact)         | 이메일 `jakesoneyo@gmail.com`, GitHub `github.com/jakesoneyo` 링크만                                    |
 
 **공통 요구사항 (S 티어 정적 사이트 기본기):**
+
 - 반응형 (모바일 / 태블릿 / 데스크톱)
 - 접근성 기본 (시맨틱 태그, alt, 키보드 포커스, 충분한 색 대비, 스킵 링크)
 - 부드러운 앵커 스크롤 네비게이션 (한 페이지 단일 스크롤)
@@ -33,7 +34,6 @@
 ## 3. 명시적 비범위 (Out of Scope)
 
 - 백엔드 / DB / API / 인증 / Swagger / Testcontainers / DB 마이그레이션 → **전부 N/A** (백엔드 없음)
-- 전화번호 노출 (사람이 명시적으로 제외 결정)
 - 실무 경력 프로젝트(유현건설 웹/앱, 스트롱쌀롱) → 이번 스코프 제외. 아래 "향후 확장 후보"로만 기록
 - CMS / 어드민 / 다국어(i18n) / 다크모드 토글 / 블로그 / 애널리틱스 → 과설계, 하지 않음
 

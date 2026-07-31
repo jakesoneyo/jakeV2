@@ -1,7 +1,7 @@
 import { profile } from "../../data/profile";
 import { SectionHead } from "./SectionHead";
 
-/** 이메일(mailto)·GitHub 링크 카드만 제공 — 전화번호는 의도적으로 노출하지 않음(SPEC 3장) */
+/** 전화(tel)·이메일(mailto)·GitHub 링크 카드 제공 */
 export function Contact() {
   return (
     <section
@@ -17,6 +17,29 @@ export function Contact() {
         />
 
         <div className="flex flex-wrap gap-4">
+          <a
+            href="tel:+821091866423"
+            className="flex flex-1 basis-56 items-center gap-3.5 rounded-lg border border-line bg-surface px-5 py-4 text-ink no-underline transition-colors hover:border-accent"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1.5}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+              className="h-[18px] w-[18px] shrink-0 text-accent"
+            >
+              <rect x="6" y="3" width="12" height="18" rx="2" />
+              <path d="M10 19h4" />
+            </svg>
+            <span>
+              <span className="block text-[0.7rem] text-muted">phone</span>
+              <span className="text-[0.88rem]">{profile.phone}</span>
+            </span>
+          </a>
+
           <a
             href={`mailto:${profile.email}`}
             className="flex flex-1 basis-56 items-center gap-3.5 rounded-lg border border-line bg-surface px-5 py-4 text-ink no-underline transition-colors hover:border-accent"

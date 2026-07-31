@@ -41,7 +41,7 @@ export function Hero() {
             프로젝트 보기
           </a>
           <a
-            href={`mailto:${profile.email}`}
+            href="#contact"
             className="inline-flex items-center gap-2 rounded-md border border-line px-5 py-2.5 text-sm text-ink no-underline transition-colors hover:border-accent hover:text-accent"
           >
             연락하기

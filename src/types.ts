@@ -57,6 +57,7 @@ export interface Profile {
   /** 문단형 자기소개 */
   intro: string;
   email: string;
+  phone: string;
   /** URL */
   github: string;
 }

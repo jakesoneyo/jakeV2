@@ -15,7 +15,7 @@ export function PrintResume() {
         <h1 className="m-0 text-2xl font-bold">{profile.name}</h1>
         <p className="m-0 mt-1 text-sm text-black/70">{profile.tagline}</p>
         <p className="m-0 mt-2 text-xs text-black/70">
-          email: {profile.email} · github: {profile.github}
+          {profile.phone} · email: {profile.email} · github: {profile.github}
         </p>
       </header>
 
