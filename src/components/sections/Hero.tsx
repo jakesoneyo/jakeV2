@@ -55,7 +55,9 @@ export function Hero() {
 }
 
 /**
- * Hero 하단의 장식용 데이터 파이프라인 다이어그램: agent → ingest api → postgres.
+ * Hero 하단의 장식용 요청 흐름 다이어그램: client → server → database.
+ * 특정 프로젝트의 기술명(postgres 등) 대신 3계층 아키텍처의 범용 이름을 써서
+ * 특정 스택 하나에 종속된 그림처럼 보이지 않게 한다.
  * width="100%" + viewBox만으로 완전히 유동적으로 축소되게 해 좁은 뷰포트에서도 잘리지 않는다
  * (고정 min-width를 두면 좁은 화면에서 내부 스크롤이 생겨 세 번째 노드가 가려짐).
  */
@@ -70,7 +72,7 @@ function PipelineDiagram() {
         role="presentation"
       >
         <text x="0" y="14" className="fill-muted font-mono text-[10px]">
-          DATA PIPELINE
+          REQUEST FLOW
         </text>
 
         <path
@@ -117,14 +119,14 @@ function PipelineDiagram() {
           strokeWidth="1.4"
         />
 
-        <text x="26" y="55" className="fill-ink-soft font-mono text-[11px]">
-          agent
+        <text x="22" y="55" className="fill-ink-soft font-mono text-[11px]">
+          CLIENT
         </text>
-        <text x="194" y="55" className="fill-ink-soft font-mono text-[11px]">
-          ingest api
+        <text x="204" y="55" className="fill-ink-soft font-mono text-[11px]">
+          SERVER
         </text>
         <text x="415" y="55" className="fill-ink-soft font-mono text-[11px]">
-          postgres
+          DATABASE
         </text>
 
         <circle
