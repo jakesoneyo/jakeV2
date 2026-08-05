@@ -55,6 +55,12 @@ function ProjectLinks({
 export function ProjectCard({ project }: { project: Project }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const titleId = useId();
+  // 대부분 한 줄(string)이지만 대표 프로젝트는 배열로 여러 사례를 담을 수 있다 — 렌더링은 항상 배열 기준으로 통일.
+  const troubleshootingItems = project.troubleshooting
+    ? Array.isArray(project.troubleshooting)
+      ? project.troubleshooting
+      : [project.troubleshooting]
+    : [];
 
   return (
     <article className="flex flex-col gap-4 rounded-lg border border-line bg-surface p-6">
@@ -176,16 +182,22 @@ export function ProjectCard({ project }: { project: Project }) {
               ))}
             </ul>
 
-            {project.troubleshooting && (
-              <div className="rounded border border-line bg-surface-2 px-3 py-2.5">
+            {troubleshootingItems.map((item, index) => (
+              <div
+                key={item}
+                className="rounded border border-line bg-surface-2 px-3 py-2.5"
+              >
                 <span className="block font-mono text-[0.68rem] tracking-wide text-accent">
                   &gt; troubleshoot
+                  {troubleshootingItems.length > 1
+                    ? ` ${index + 1}/${troubleshootingItems.length}`
+                    : ""}
                 </span>
                 <p className="m-0 mt-1 font-sans text-[0.8rem] leading-relaxed text-ink-soft">
-                  {project.troubleshooting}
+                  {item}
                 </p>
               </div>
-            )}
+            ))}
 
             <ProjectLinks
               project={project}

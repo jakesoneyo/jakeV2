@@ -18,6 +18,45 @@ import type { Project } from "../types";
  */
 export const projects: Project[] = [
   {
+    slug: "match-mate",
+    title: "MATCH MATE — 풋살팀 매니저 (한발더FC)",
+    description:
+      "실제로 활동 중인 조기축구팀(한발더FC)이 구글시트로 관리하던 출결·회비·팀 밸런싱을 그대로 옮긴 매니저 앱. 전력 기반 자동 팀 분할, 재계산 가능한 대진표, 익명 MOM 투표 등 도메인 로직을 NestJS 백엔드에 웹(React)·모바일(Expo) 클라이언트로 함께 구현했다.",
+    types: ["실시간", "데이터/알고리즘"],
+    stack: [
+      "NestJS",
+      "Prisma",
+      "Neon Postgres",
+      "Socket.io",
+      "React",
+      "Vite",
+      "Expo (React Native)",
+    ],
+    status: "completed",
+    detail: {
+      intro:
+        "실제로 뛰고 있는 조기축구팀의 총무가 매주 구글시트로 하던 일 — 출석 체크, 회비 장부, 그날그날 인원 맞춰 팀 나누기 — 을 앱 하나로 옮긴 프로젝트다. 매치 등록부터 참석 투표, 팀 자동 분할, 대진·결과 기록, MOM 투표, 회비 정산까지 한 팀의 시즌 운영 전체를 다룬다. 백엔드 하나에 웹과 Expo 모바일 앱이 동일한 API 계약을 공유하는 모노레포로 구성했고, 실제 팀 데이터를 기준으로 데모 로그인 계정을 채워 뒀다.",
+      highlights: [
+        "전력 점수 계산에 축소추정(shrinkage)을 적용해, 표본이 적은 신규 회원의 승률·출석률이 과대평가되지 않게 했다(1승 0패가 100%가 아니라 62.5%로 계산되는 식).",
+        "스네이크 드래프트로 팀 인원 차 1명 이하를 구조적으로 보장한 뒤, hill-climbing 국소탐색으로 팀 간 전력 표준편차를 최소화하는 자동 팀 분할 알고리즘을 만들었다.",
+        "대진표를 DB에 저장하지 않고 결과 로그로부터 매번 재계산(projection)하는 방식으로 설계해, 점수 정정 시 이후 대진이 특수 케이스 없이 자동으로 다시 계산되게 했다.",
+        "MomVote 테이블에 투표자를 특정할 컬럼을 아예 두지 않고 HMAC 해시로만 저장하면서도, DB 유니크 제약으로 1인 1표를 강제해 비식별성과 무결성을 동시에 확보했다.",
+        "Google·Kakao OAuth와 JWT 리프레시 토큰 회전을 구현하고, 웹/모바일 클라이언트별 토큰 전달 방식(쿠키 vs 바디)을 하나의 서버에서 분기 처리했다.",
+        "팀 분할·대진·MOM 개봉 결과를 Socket.io로 실시간 반영하되, 페이로드에 버전 번호를 실어 늦게 도착한 이벤트를 클라이언트가 스스로 버리게 했다.",
+        "회비 장부·출석 현황표를 팀이 실제 쓰던 구글시트 포맷(선수×월, 이름×매치 O/X 표) 그대로 재현하고, 웹과 모바일 양쪽에 동일한 계약으로 이식했다.",
+        "Testcontainers로 실제 Postgres를 띄워 팀 간 데이터 격리, 동시 요청 경합, 스케줄러 중복 실행 방지 등을 통합테스트로 검증했다.",
+      ],
+    },
+    troubleshooting: [
+      "이미 FINISHED로 종료된 매치의 과거 점수를 정정하면 대진표가 계속 새로 생성되는 버그가 있었다. '몇 경기까지 진행할지는 매치 상태로 결정한다'는 규칙이 대진 재투영 로직에 빠져 있던 게 원인이었고, 매치 상태 가드(SCHEDULED/LIVE일 때만 새 대진을 만듦)를 추가해 해결했다.",
+      "마지막 한 표가 HTTP로 들어오는 시점과 스케줄러가 자동으로 투표를 마감하는 시점이 겹치면 MOM 개봉이 두 번 일어날 수 있었다. DB 유니크 제약과 트랜잭션으로 묶어 정확히 1세트만 개봉되고 소켓 emit도 1회만 나가도록 만들고, 두 경로가 실제로 동시에 도착하는 상황을 통합테스트로 재현해 검증했다.",
+      "정기 매치 스케줄러가 재배포·재시작 등으로 여러 번 실행돼도 같은 팀·같은 시간에 매치가 중복 생성되면 안 됐다. `@@unique([teamId, kickoffAt])` DB 제약과 앱 레벨 skipDuplicates를 이중으로 걸고, 스케줄러를 두 번 연달아 실행해도 매치 행 수가 늘지 않는 것을 통합테스트로 확인했다.",
+    ],
+    liveUrl: "https://match-mate-wine.vercel.app",
+    repoUrl: "https://github.com/jakesoneyo/match-mate",
+    apiHealthUrl: "https://match-mate-api-as81.onrender.com/health",
+  },
+  {
     slug: "linkstash-ai",
     title: "LinkBrief — AI 자동요약 북마크 SaaS",
     description:

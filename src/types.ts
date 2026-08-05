@@ -27,8 +27,11 @@ export interface Project {
   primaryLinkLabel?: string;
   /** 있을 때만 버튼 렌더 */
   repoUrl?: string;
-  /** 카드에 노출할 트러블슈팅 한 줄 요약 — 실제 개발 과정에서 겪은 문제와 해결 (다른 프로젝트와 겹치지 않는 이야기) */
-  troubleshooting?: string;
+  /**
+   * 카드에 노출할 트러블슈팅 — 실제 개발 과정에서 겪은 문제와 해결 (다른 프로젝트와 겹치지 않는 이야기).
+   * 대부분 한 줄(string)이지만, 대표 프로젝트처럼 여러 사례를 보여주고 싶을 때만 배열을 쓴다.
+   */
+  troubleshooting?: string | string[];
   /** 있으면 앱 마운트 시 fire-and-forget으로 호출해 Render 콜드스타트를 미리 깨운다 */
   apiHealthUrl?: string;
   /** 있으면 카드에 "자세히 보기" 버튼을 렌더 — 클릭 시 모달로 상세 소개·구현 내용을 보여준다 */
