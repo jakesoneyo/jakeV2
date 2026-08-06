@@ -109,6 +109,40 @@ export const projects: Project[] = [
     apiHealthUrl: "https://pingboard-server.onrender.com/health",
   },
   {
+    slug: "study-fine",
+    title: "study-fine — 스터디모임 출석 관리 + 벌금 자동 정산",
+    description:
+      "스터디 회차별 출석(정상/지각/결석)을 체크하면 서버가 그 시점 단가로 벌금을 확정 저장하는 CRUD 앱. Java·Spring Boot로 만든 첫 백엔드로, 최신 Spring Boot 4 / Spring Security 7 스택을 직접 부딪히며 다뤘다.",
+    types: ["CRUD"],
+    stack: [
+      "Spring Boot",
+      "Java",
+      "Spring Data JPA",
+      "Spring Security",
+      "Flyway",
+      "Neon Postgres",
+      "React",
+      "Vite",
+    ],
+    status: "completed",
+    detail: {
+      intro:
+        "스터디 모임 운영자가 회차마다 멤버 출석을 체크하면 지각·결석 단가로 벌금이 자동 계산·확정되는 앱이다. 그동안 NestJS로만 백엔드를 만들어 왔는데, 이번에는 의도적으로 Java·Spring Boot를 골라 처음부터 다뤘다. 마침 릴리스된 지 얼마 안 된 Spring Boot 4 / Spring Security 7이라 마이그레이션 문서가 부족해 직접 부딪히며 트러블슈팅한 게 많았고, JVM 메모리 구조를 이해해야 풀리는 배포 문제까지 실제로 겪었다.",
+      highlights: [
+        "벌금을 조회 시점에 계산하지 않고 출석 체크 시점의 단가로 즉시 확정 저장해, 이후 단가를 올려도 과거 회차 금액이 소급 변경되지 않도록 설계했다.",
+        "누적 벌금·회차별 합계는 GROUP BY 단일 프로젝션 쿼리로, 출석 일괄 저장은 반복문 진입 전 기존 기록을 한 번에 Map으로 조회해 N+1을 구조적으로 차단했다.",
+        "본인 리소스 조회는 `/api/me/**`처럼 토큰의 sub만 쓰고 id 파라미터 자체를 받지 않게 설계해, id 비교를 빠뜨려 생기는 수평 권한 상승을 원천 차단했다.",
+        "Spring Security 7부터 CSRF가 API 요청에도 기본 적용되는 등 프레임워크 기본값이 바뀐 지점들을 실제로 겪으며 원인을 추적하고 정리했다.",
+        "데모 계정도 예외 없이 bcrypt 정상 검증을 통과하게 하고, 인증 우회용 엔드포인트를 아예 두지 않았다.",
+      ],
+    },
+    troubleshooting:
+      "Render 무료 티어 512MB 컨테이너에 그대로 배포했더니 클래스 로딩 중 OutOfMemoryError로 죽었다. 메타스페이스(클래스 메타데이터가 쌓이는 영역)를 96MB로 좁게 잡은 게 원인이었는데, 힙과 메타스페이스가 서로 다른 메모리 영역이라는 걸 실측으로 확인하며 힙 256MB·메타스페이스 180MB로 재조정하고 SerialGC로 바꿔, 512MB 컨테이너 안에서 기동부터 반복 API 호출까지 396MB 선에서 안정적으로 버티는 걸 직접 확인한 뒤에야 라이브로 띄울 수 있었다.",
+    liveUrl: "https://study-fine.vercel.app",
+    repoUrl: "https://github.com/jakesoneyo/study-fine",
+    apiHealthUrl: "https://study-fine-api.onrender.com/health",
+  },
+  {
     slug: "yuhyeon-construction",
     title: "유현건설 계측 모니터링 플랫폼",
     description:
