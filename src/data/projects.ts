@@ -112,7 +112,7 @@ export const projects: Project[] = [
     slug: "study-fine",
     title: "study-fine — 스터디모임 출석 관리 + 벌금 자동 정산",
     description:
-      "스터디 회차별 출석(정상/지각/결석)을 체크하면 서버가 그 시점 단가로 벌금을 확정 저장하는 CRUD 앱. Java·Spring Boot로 만든 첫 백엔드로, 최신 Spring Boot 4 / Spring Security 7 스택을 직접 부딪히며 다뤘다.",
+      "스터디 모임의 멤버·회차·출석을 관리하고, 지각·결석 벌금은 체크 시점 단가로 자동 확정 저장하는 CRUD 앱. Java·Spring Boot로 만든 첫 백엔드로, 최신 Spring Boot 4 / Spring Security 7 스택을 직접 부딪히며 다뤘다.",
     types: ["CRUD"],
     stack: [
       "Spring Boot",
