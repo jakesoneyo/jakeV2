@@ -21,6 +21,10 @@ export function Projects() {
           heading="프로젝트"
           headingId="projects-heading"
         />
+        <p className="-mt-6 mb-8 text-sm text-muted">
+          한동안 방문이 없으면 서버가 잠들어요. 처음 열 때 살짝 기다려주시면
+          금방 깨어납니다.
+        </p>
 
         {hasProjects ? (
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
