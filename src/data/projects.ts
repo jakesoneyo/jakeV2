@@ -198,6 +198,7 @@ export const projects: Project[] = [
     primaryLinkLabel: "APK 설치 페이지",
     repoUrl: "https://github.com/jakesoneyo/yuhyeonApp",
   },
+  /* 임시 비공개 — 복구 시 이 블록 주석만 해제
   {
     slug: "strongsalon",
     title: "스트롱쌀롱 — PT샵 회원 체력평가 시스템",
@@ -224,4 +225,5 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/jakesoneyo/newGym",
     apiHealthUrl: "https://newgym-1qof.onrender.com/health",
   },
+  */
 ];
