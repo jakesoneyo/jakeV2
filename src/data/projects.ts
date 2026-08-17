@@ -18,41 +18,6 @@ import type { Project } from "../types";
  */
 export const projects: Project[] = [
   {
-    slug: "range-card",
-    title: "RANGE CARD — 배틀그라운드 택티컬 맵 인텔 + 전적검색",
-    description:
-      "배틀그라운드 고정 차량·보트·글라이더·비밀의 방 등 고정 스폰 417건을 지도에 표시하고 박격포 사거리를 계산하는 맵 인텔 툴 + 공식 API 전적검색. 공식 API가 안 주는 좌표 데이터를 커뮤니티 소스에서 두 가지 방식(사이트 몽키패치·이미지 색상 클러스터링)으로 직접 추출·교차검증했다.",
-    types: ["데이터/알고리즘", "외부API"],
-    stack: [
-      "NestJS",
-      "Prisma",
-      "Neon Postgres",
-      "React",
-      "Leaflet",
-      "PUBG API",
-    ],
-    status: "completed",
-    detail: {
-      intro:
-        "맵을 고르면 지도가 뜨고, 고정 차량·고정 보트·비밀의 방·차고집(확률형)·글라이더·주유소 7종 레이어를 체크박스로 켜고 끌 수 있다. 두 지점을 클릭하면 박격포 사거리(121~700m) 안인지 계산해 주고, 전적검색은 공식 PUBG API를 연동해 로그인 없이 로컬(localStorage)에 즐겨찾기를 저장한다. 이 프로젝트의 핵심은 '공식 API가 주지 않는 정적 데이터를 어떻게 신뢰할 수 있게 만드느냐'였다 — 커뮤니티 지도 사이트는 Playwright로 마커 생성자를 몽키패치해 좌표를 뽑고, 정적 이미지 게시글은 점의 색상을 픽셀 단위로 스캔해 연결성분으로 좌표를 뽑는 두 기법을 만들어 서로 교차검증했다.",
-      highlights: [
-        "커뮤니티 지도(Leaflet)는 Playwright로 마커 생성자를 몽키패치해 좌표를 추출하고, 정적 이미지 게시글은 색상 마스크+BFS 연결성분 라벨링으로 좌표를 추출하는 두 기법을 직접 설계했다. 같은 맵을 두 기법으로 각각 뽑아 개수가 정확히 일치하는 것으로 방법론 자체를 교차검증했다.",
-        "좌표 마다 isActive·lastVerifiedAt·sourceUrl을 남겨 '데이터는 언젠가 틀려진다'는 전제를 스키마로 다루고, 검증 안 된 항목은 추측으로 채우지 않고 빈 레이어로 남겼다.",
-        "공식 PUBG API 분당 10req 제한을 캐시(TTL)+레이트리밋+stale 폴백 3중으로 방어해, 캐시 미스 상황에서도 서비스가 죽지 않게 했다.",
-        "Leaflet L.CRS.Simple 위에서 픽셀 좌표↔latlng을 순수함수로 변환해 박격포 평면거리 계산과 마커 렌더링에 공용으로 썼다.",
-        "배포 직전 지도 마커가 지형을 가리는 문제를 라이브 CSS 주입으로 17개 이상의 후보를 실제 데이터 밀도 위에서 비교해 확정하고, 히트박스·대비 저하 같은 트레이드오프까지 미리 정리한 뒤 그대로 구현·배포했다.",
-        "게임 파일 직접 추출(데이터마이닝)과 스크린샷·좌표 인용 같은 콘텐츠 이용을 구분해, 법적 리스크가 있는 방식은 배제하고 출처를 전부 문서화했다.",
-      ],
-    },
-    troubleshooting: [
-      "배포 직후 사이트가 남에게는 Vercel 로그인 화면으로 보였다. 신규 프로젝트에 기본으로 걸리는 Deployment Protection(SSO 인증) 설정이 원인이었는데, 대시보드 UI 대신 Vercel REST API로 프로젝트 설정 필드를 직접 조회해 원인을 찾고 API로 해제했다.",
-      "이후 GitHub 저장소를 뒤늦게 연결하니 `vite: command not found`로 빌드가 깨졌다. 저장소가 모노레포가 아니라 frontend/backend 2-폴더 구조라 루트에 package.json이 없는 게 원인이었는데, Vercel이 이 구조를 멀티서비스 모노레포로 오인식해 원치 않는 vercel.json까지 자동 생성해 둔 걸 발견하고 제거한 뒤, 문제가 없던 배포 방식으로 되돌려 해결했다.",
-    ],
-    liveUrl: "https://noobg.vercel.app",
-    repoUrl: "https://github.com/jakesoneyo/range-card",
-    apiHealthUrl: "https://range-card.onrender.com/health",
-  },
-  {
     slug: "match-mate",
     title: "MATCH MATE — 풋살팀 매니저 (한발더FC)",
     description:
@@ -90,6 +55,41 @@ export const projects: Project[] = [
     liveUrl: "https://match-mate-wine.vercel.app",
     repoUrl: "https://github.com/jakesoneyo/match-mate",
     apiHealthUrl: "https://match-mate-api-as81.onrender.com/health",
+  },
+  {
+    slug: "range-card",
+    title: "NOOBG — 배틀그라운드 택티컬 맵 인텔 + 전적검색",
+    description:
+      "배틀그라운드 고정 차량·보트·글라이더·비밀의 방 등 고정 스폰 417건을 지도에 표시하고 박격포 사거리를 계산하는 맵 인텔 툴 + 공식 API 전적검색. 공식 API가 안 주는 좌표 데이터를 커뮤니티 소스에서 두 가지 방식(사이트 몽키패치·이미지 색상 클러스터링)으로 직접 추출·교차검증했다.",
+    types: ["데이터/알고리즘", "외부API"],
+    stack: [
+      "NestJS",
+      "Prisma",
+      "Neon Postgres",
+      "React",
+      "Leaflet",
+      "PUBG API",
+    ],
+    status: "completed",
+    detail: {
+      intro:
+        "맵을 고르면 지도가 뜨고, 고정 차량·고정 보트·비밀의 방·차고집(확률형)·글라이더·주유소 7종 레이어를 체크박스로 켜고 끌 수 있다. 두 지점을 클릭하면 박격포 사거리(121~700m) 안인지 계산해 주고, 전적검색은 공식 PUBG API를 연동해 로그인 없이 로컬(localStorage)에 즐겨찾기를 저장한다. 이 프로젝트의 핵심은 '공식 API가 주지 않는 정적 데이터를 어떻게 신뢰할 수 있게 만드느냐'였다 — 커뮤니티 지도 사이트는 Playwright로 마커 생성자를 몽키패치해 좌표를 뽑고, 정적 이미지 게시글은 점의 색상을 픽셀 단위로 스캔해 연결성분으로 좌표를 뽑는 두 기법을 만들어 서로 교차검증했다.",
+      highlights: [
+        "커뮤니티 지도(Leaflet)는 Playwright로 마커 생성자를 몽키패치해 좌표를 추출하고, 정적 이미지 게시글은 색상 마스크+BFS 연결성분 라벨링으로 좌표를 추출하는 두 기법을 직접 설계했다. 같은 맵을 두 기법으로 각각 뽑아 개수가 정확히 일치하는 것으로 방법론 자체를 교차검증했다.",
+        "좌표 마다 isActive·lastVerifiedAt·sourceUrl을 남겨 '데이터는 언젠가 틀려진다'는 전제를 스키마로 다루고, 검증 안 된 항목은 추측으로 채우지 않고 빈 레이어로 남겼다.",
+        "공식 PUBG API 분당 10req 제한을 캐시(TTL)+레이트리밋+stale 폴백 3중으로 방어해, 캐시 미스 상황에서도 서비스가 죽지 않게 했다.",
+        "Leaflet L.CRS.Simple 위에서 픽셀 좌표↔latlng을 순수함수로 변환해 박격포 평면거리 계산과 마커 렌더링에 공용으로 썼다.",
+        "배포 직전 지도 마커가 지형을 가리는 문제를 라이브 CSS 주입으로 17개 이상의 후보를 실제 데이터 밀도 위에서 비교해 확정하고, 히트박스·대비 저하 같은 트레이드오프까지 미리 정리한 뒤 그대로 구현·배포했다.",
+        "게임 파일 직접 추출(데이터마이닝)과 스크린샷·좌표 인용 같은 콘텐츠 이용을 구분해, 법적 리스크가 있는 방식은 배제하고 출처를 전부 문서화했다.",
+      ],
+    },
+    troubleshooting: [
+      "배포 직후 사이트가 남에게는 Vercel 로그인 화면으로 보였다. 신규 프로젝트에 기본으로 걸리는 Deployment Protection(SSO 인증) 설정이 원인이었는데, 대시보드 UI 대신 Vercel REST API로 프로젝트 설정 필드를 직접 조회해 원인을 찾고 API로 해제했다.",
+      "이후 GitHub 저장소를 뒤늦게 연결하니 `vite: command not found`로 빌드가 깨졌다. 저장소가 모노레포가 아니라 frontend/backend 2-폴더 구조라 루트에 package.json이 없는 게 원인이었는데, Vercel이 이 구조를 멀티서비스 모노레포로 오인식해 원치 않는 vercel.json까지 자동 생성해 둔 걸 발견하고 제거한 뒤, 문제가 없던 배포 방식으로 되돌려 해결했다.",
+    ],
+    liveUrl: "https://noobg.vercel.app",
+    repoUrl: "https://github.com/jakesoneyo/range-card",
+    apiHealthUrl: "https://range-card.onrender.com/health",
   },
   {
     slug: "linkstash-ai",

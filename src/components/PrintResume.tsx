@@ -56,7 +56,10 @@ export function PrintResume() {
               </p>
               {project.troubleshooting && (
                 <p className="m-0 mt-0.5 text-xs leading-relaxed text-black/70">
-                  트러블슈팅: {project.troubleshooting}
+                  트러블슈팅:{" "}
+                  {Array.isArray(project.troubleshooting)
+                    ? project.troubleshooting.join(" / ")
+                    : project.troubleshooting}
                 </p>
               )}
               {(project.liveUrl || project.repoUrl) && (
