@@ -1,9 +1,10 @@
-/** 상단 고정 네비게이션 — 섹션 인덱스(01~04) 스타일 앵커 링크. Console 디자인 시안의 콘솔 무드 핵심 요소. */
+/** 상단 고정 네비게이션 — 섹션 인덱스(01~05) 스타일 앵커 링크. Console 디자인 시안의 콘솔 무드 핵심 요소. */
 const NAV_ITEMS = [
   { index: "01", label: "소개", href: "#about" },
   { index: "02", label: "핵심역량", href: "#skills" },
-  { index: "03", label: "프로젝트", href: "#projects" },
-  { index: "04", label: "연락처", href: "#contact" },
+  { index: "03", label: "실무경험", href: "#experience" },
+  { index: "04", label: "프로젝트", href: "#projects" },
+  { index: "05", label: "연락처", href: "#contact" },
 ] as const;
 
 export function Header() {
