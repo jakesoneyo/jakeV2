@@ -88,8 +88,7 @@ export function Experience() {
                 className="rounded border border-line bg-surface-2 px-3 py-2.5"
               >
                 <span className="block font-mono text-[0.68rem] tracking-wide text-accent">
-                  &gt; troubleshoot {index + 1}/
-                  {EXPERIENCE.troubleshooting.length}
+                  &gt; troubleshoot {index + 1}
                 </span>
                 <p className="m-0 mt-1 font-sans text-[0.8rem] leading-relaxed text-ink-soft">
                   {item}
