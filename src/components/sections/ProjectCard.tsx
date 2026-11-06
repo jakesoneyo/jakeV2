@@ -189,9 +189,7 @@ export function ProjectCard({ project }: { project: Project }) {
               >
                 <span className="block font-mono text-[0.68rem] tracking-wide text-accent">
                   &gt; troubleshoot
-                  {troubleshootingItems.length > 1
-                    ? ` ${index + 1}/${troubleshootingItems.length}`
-                    : ""}
+                  {troubleshootingItems.length > 1 ? ` ${index + 1}` : ""}
                 </span>
                 <p className="m-0 mt-1 font-sans text-[0.8rem] leading-relaxed text-ink-soft">
                   {item}
