@@ -221,12 +221,8 @@ export const projects: Project[] = [
       intro:
         "현장 담당자가 데스크톱 환경이 아니어도 센서 상태·알람·대시보드 지표를 확인할 수 있도록 만든 모바일 앱이다. 웹과 동일한 API 계약을 유지해 기능 동등성을 확보했다.",
       highlights: [
-        "로그인·로그아웃·세션 복원 흐름을 AuthController에서 일원화하고, 세션 복원 시 /api/auth/me로 토큰 유효성을 서버 기준으로 재확인했다.",
-        "JWT 토큰을 flutter_secure_storage에 저장하고, Dio interceptor로 Authorization 헤더를 자동 부착했다.",
-        "권한(canManage) 기준으로 읽기 전용/관리 가능 UI를 분리했다.",
-        "depth_criteria·correction_params·formula_params를 구조화해 depth별 데이터를 안정적으로 처리했다.",
-        "목업 모드와 실 API 구조를 분리해 시연 단계에서 실연동 단계로 자연스럽게 전환되도록 설계했다.",
-        "GitHub Releases로 테스트 APK를 패키징하고 QR 코드로 설치 링크를 배포해 현장 테스트 전달 과정을 단순화했다.",
+        "JWT를 secure storage에 저장하고, 세션 복원 시 /api/auth/me로 토큰 유효성을 서버 기준으로 재확인했다.",
+        "권한 기준으로 읽기 전용/관리 UI를 나누고, 웹과 같은 API 계약으로 기능 동등성을 유지했다.",
       ],
     },
     liveUrl: "https://github.com/jakesoneyo/yuhyeonApp/releases",

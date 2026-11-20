@@ -52,6 +52,7 @@ export const skills: SkillCategory[] = [
     items: [
       "PostgreSQL",
       "Neon Postgres",
+      "AWS(EC2·RDS·S3·Route 53)",
       "Docker",
       "Render",
       "Vercel",
