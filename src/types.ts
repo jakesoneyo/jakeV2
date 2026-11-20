@@ -48,7 +48,7 @@ export interface ProjectDetail {
 
 /** Skills 섹션의 카테고리 그룹 */
 export interface SkillCategory {
-  label: "Frontend" | "Backend" | "Data · Deploy";
+  label: "Frontend" | "Backend" | "Data · Infra · Test";
   items: string[];
 }
 

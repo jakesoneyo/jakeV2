@@ -41,6 +41,7 @@ export const skills: SkillCategory[] = [
       "Spring Security",
       "JWT",
       "bcrypt",
+      "OAuth(Kakao·Google)",
       "Socket.io",
       "WebSocket",
       "class-validator",
@@ -48,7 +49,7 @@ export const skills: SkillCategory[] = [
     ],
   },
   {
-    label: "Data · Deploy",
+    label: "Data · Infra · Test",
     items: [
       "PostgreSQL",
       "Neon Postgres",
@@ -56,11 +57,11 @@ export const skills: SkillCategory[] = [
       "Docker",
       "Render",
       "Vercel",
-      "GitHub Actions",
+      "GitHub Actions(OIDC)",
+      "Jest",
+      "Vitest",
+      "Playwright",
       "Testcontainers",
-      "CORS",
-      "ExcelJS",
-      "jsPDF",
     ],
   },
 ];
